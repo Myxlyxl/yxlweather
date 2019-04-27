@@ -5,9 +5,9 @@ import org.litepal.crud.DataSupport;
  * Created by hasee on 2019/4/24.
  */
 
-public class Country extends DataSupport {
+public class County extends DataSupport {
     private int id;
-    private String countryName;
+    private String countyName;
     private String weatherId; // 县所对应的天气
     private int cityId; // 县所属的市的 id 值
     public int getId() {
@@ -16,11 +16,11 @@ public class Country extends DataSupport {
     public void setId(int id) {
         this.id = id;
     }
-    public String getCountryName() {
-        return countryName;
+    public String getCountyName() {
+        return countyName;
     }
-    public void setCountryName(String countryName) {
-        this.countryName = countryName;
+    public void setCountyName(String countyName) {
+        this.countyName = countyName;
     }
     public String getWeatherId() {
         return weatherId;
