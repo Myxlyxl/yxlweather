@@ -67,7 +67,7 @@ public class ChooseAreaFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                            Bundle savedInstanceState) {
+                             Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.choose_area, container, false);
         titleText = (TextView) view.findViewById(R.id.title_text);
         backButton = (Button) view.findViewById(R.id.back_button);
@@ -159,10 +159,10 @@ public class ChooseAreaFragment extends Fragment {
     /**
      *  查询所有的县
      */
-    public void queryCounties() {
+    private void queryCounties() {
         titleText.setText(chosenCity.getCityName());
         backButton.setVisibility(View.VISIBLE);
-        countyList = DataSupport.where("Cityid = ?", String.valueOf(chosenCity.getId())).find(County.class);
+        countyList = DataSupport.where("cityid = ?", String.valueOf(chosenCity.getId())).find(County.class);
         if (countyList.size() > 0) {
             dataList.clear();
             for (County county : countyList) {
@@ -171,12 +171,10 @@ public class ChooseAreaFragment extends Fragment {
             adapter.notifyDataSetChanged();
             listView.setSelection(0);
             currentLevel = LEVEL_COUNTY;
-        }
-        else {
+        } else {
             int provinceCode = chosenProvince.getProvinceCode();
             int cityCode = chosenCity.getCityCode();
-            String address = "http://guolin.tech/api/china/" + provinceCode + "/"
-                    + cityCode;
+            String address = "http://guolin.tech/api/china/" + provinceCode + "/" + cityCode;
             queryFromServer(address, "county");
         }
     }
@@ -253,3 +251,4 @@ public class ChooseAreaFragment extends Fragment {
         }
     }
 }
+
